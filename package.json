@@ -1,6 +1,6 @@
 {
   "name": "mindstate-plugin-locations",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Mindstate plugin to backup static directories on disk",
   "main": "index.js",
   "repository": {
@@ -13,9 +13,9 @@
   "author": "Matt Carter <m@ttcarter.com> (https://github.com/hash-bang)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hash-bang/mindstate-plugin-example/issues"
+    "url": "https://github.com/hash-bang/mindstate-plugin-locations/issues"
   },
-  "homepage": "https://github.com/hash-bang/mindstate-plugin-example#readme",
+  "homepage": "https://github.com/hash-bang/mindstate-plugin-locations#readme",
   "dependencies": {
     "async-chainable": "^1.7.15",
     "colors": "^1.1.2",

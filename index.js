@@ -11,22 +11,26 @@ module.exports = {
 			.then(function(next) {
 				// Sanity checks {{{
 				if (!mindstate.config.locations.enabled) {
-					if (mindstate.program.verbose) console.log(colors.grey('Locations backup is disabled'));
+					if (mindstate.verbose) console.log(colors.blue('[Locations]'), 'Locations backup is disabled');
 					return next('SKIP');
 				}
 
 				if (!mindstate.config.locations.dir.length) {
-					if (mindstate.program.verbose) console.log(colors.grey('No additional locations to backup'));
+					if (mindstate.verbose) console.log(colors.blue('[Locations]'), 'No locations specified to backup');
 					return next('SKIP');
 				}
 				next();
 				// }}}
 			})
 			.forEach(mindstate.config.locations.dir, function(next, dir) {
-				copy.dir(dir, workspace.dir + '/' + dir, next);
+				if (mindstate.verbose) console.log(colors.blue('[Locations]'), 'Backup', colors.cyan(dir));
+				copy.dir(dir, workspace.dir + '/' + dir, function(err) {
+					if (mindstate.verbose > 1) console.log(colors.blue('[Locations]'), 'Backup complete of', colors.cyan(dir));
+					next(err);
+				});
 			})
 			.then(function(next) {
-				if (mindstate.program.verbose) console.log(colors.blue('[Locations]'), colors.cyan(mindstate.config.locations.dir.length), 'paths copied');
+				if (mindstate.verbose) console.log(colors.blue('[Locations]'), colors.cyan(mindstate.config.locations.dir.length), 'paths copied');
 				return next();
 			})
 			.end(finish);
