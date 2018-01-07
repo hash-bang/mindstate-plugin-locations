@@ -1,7 +1,7 @@
 var _ = require('lodash');
 var async = require('async-chainable');
 var colors = require('colors');
-var copy = require('copy');
+var fs = require('fs-extra');
 
 module.exports = {
 	name: 'locations',
@@ -24,7 +24,7 @@ module.exports = {
 			})
 			.forEach(mindstate.config.locations.dir, function(next, dir) {
 				if (mindstate.verbose) console.log(colors.blue('[Locations]'), 'Backup', colors.cyan(dir));
-				copy.dir(dir, workspace.dir + '/' + dir, function(err) {
+				fs.copy(dir, workspace.dir + '/' + dir, function(err) {
 					if (mindstate.verbose > 1) console.log(colors.blue('[Locations]'), 'Backup complete of', colors.cyan(dir));
 					next(err);
 				});
