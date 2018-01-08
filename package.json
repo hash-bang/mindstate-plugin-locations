@@ -1,6 +1,6 @@
 {
   "name": "mindstate-plugin-locations",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Mindstate plugin to backup static directories on disk",
   "main": "index.js",
   "repository": {
